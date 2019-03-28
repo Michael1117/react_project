@@ -9,3 +9,5 @@ react
     -> 基于路由的SPA单页开发
     -> 基于ES6来编写代码 (最后部署上线)
 ### react-scripts
+
+## 只需要 npm i node-sass -D
