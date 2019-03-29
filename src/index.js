@@ -1,25 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Dialog from './component/Dialog.js'
 
-//import qs from 'qs';
-//import './static/less/index.scss'
+let root = document.querySelector('#root')
+ReactDOM.render(<div>
+   {/*JSX调取组件*/}
+   <Dialog con='哈哈哈' style={{color: 'red'}}/>
+   <Dialog con="嘿嘿嘿" lx={2}>
+       <span>1</span>
+       <span>2</span>
+   </Dialog>
+</div>, root)
 
-import './3-self-jsx'
-
-/* console.log(qs.parse('name=Michael&age=19')) */
 
 
-//var data = 'Michael';
-
-/*  不建议 直接写 document.body
-ReactDOM.render(<div id="box">Hello World {data}</div>, document.body, () => {
-    let oBox = document.querySelector('#box');
-    console.log(oBox.innerHTML)
-}) */
-
-/*
-ReactDOM.render(<div id="box">Hello World {data}</div>, document.querySelector('#root'), () => {
-    let oBox = document.querySelector('#box');
-    console.log(oBox.innerHTML)
-})*/
 
