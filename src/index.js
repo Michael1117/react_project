@@ -3,36 +3,54 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import PropTypes from 'prop-types'
 
-class Temp extends React.Component {
+class A extends React.Component {
+    //static defaultProps = {}
     constructor() {
         super();
-        this.state = {
-            text: 'Michael'
-        }
+        console.log('1=constructor')
+
+        this.state = {n: 1}
+    }
+
+    componentWillMount() {
+        console.log('2=will-mount:第一次渲染之前,componentWillMount', this.refs.HH)
     }
 
     componentDidMount() {
-        setTimeout(() => {
-            this.setState({text: 'Hello World'})
-        }, 1000)
+        console.log('4=Did-mount:第一次渲染之后,componentDidMount-----', this.refs.HH)
+
+        setInterval(() => {
+            this.setState({
+                n: this.state.n + 1
+            })
+        }, 4000)
+    }
+
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        //console.log(nextContext);
+        console.log('5=是否允许更新, shouldComponentUpdate', nextState.n);
+        if (nextState.n > 3) {
+            return false
+        }
+        return true
+    }
+
+    componentWillUpdate(nextProps, nextState, nextContext) {
+        console.log('6=组件更新之前, componentWillUpdate');
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        //console.log(snapshot);
+        console.log('8=组件更新之后, componentDidUpdate-----');
     }
 
     render() {
-        let {text} = this.state;
-        return <section className="panel panel-default">
-            <div className="panel-heading">
-                <input onChange={ev => {
-                    /**/
-                    this.setState({
-                        text: ev.target.value
-                    })
-                }} type="text" className="form-control" value={text}/>
-            </div>
-            <div className="panel-body">
-                {text}
-            </div>
-        </section>
+        console.log('render');
+        return <div ref='HH'>
+            {this.state.n}
+        </div>
     }
 }
 
-ReactDOM.render(<Temp/>, document.querySelector('#root'))
+
+ReactDOM.render(<A/>, document.querySelector('#root'))
