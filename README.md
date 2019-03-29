@@ -13,3 +13,7 @@ react
 ## 只需要 npm i node-sass -D
 
 ## set HTTPS=true&&npm start 和 set HTTPS=true&&npm run start都可以
+
+## set PORT=63342&&npm start
+
+## set HTTPS=false&&set PORT=3000&&npm start
