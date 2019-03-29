@@ -19,13 +19,28 @@ class Vote extends React.Component {
         }
     }
     support = ev => {
-        this.setState({n: this.state.n + 1})
+        //console.log(this.refs);
+        let {spanLeft} = this.refs;
+
+        spanLeft.innerHTML ++
+        this.computed()
     }
 
     against = ev => {
-        this.setState({m: this.state.m + 1})
+        let {spanRight} = this.refs;
+
+        spanRight.innerHTML ++
+        this.computed()
     }
 
+    computed = () => {
+        let {spanLeft, spanRight, spanRate } = this.refs,
+            n = parseFloat(spanLeft.innerHTML),
+            m = parseFloat(spanRight.innerHTML),
+            rate = ( n+m) === 0 ? '0%' : ((n / (n+m) * 100).toFixed(2) + '%')
+        spanRate.innerHTML = rate;
+
+    }
     render() {
         let {n, m} = this.state,
             rate = (n + m) === 0 ? '0%' : ((n/(n+m) * 100).toFixed(2) + '%')
@@ -36,13 +51,13 @@ class Vote extends React.Component {
                 </h3>
             </div>
             <div className="panel-body">
-                支持人数：{n}
+                支持人数：<span ref="spanLeft">0</span>
                 <br/>
                 <br/>
-                反对人数：{m}
+                反对人数：<span ref="spanRight">0</span>
                 <br/>
                 <br/>
-                支持率：{rate}
+                支持率：<span ref="spanRate">0</span>
             </div>
             <div className="panel-footer">
                 <button className="btn btn-success" onClick={this.support}>支持</button>
