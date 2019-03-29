@@ -18,32 +18,35 @@ class Vote extends React.Component {
             m: 0   // 反对人数
         }
     }
+
     support = ev => {
         //console.log(this.refs);
-        let {spanLeft} = this.refs;
+        console.log(this);
+        let {spanLeft} = this;
 
-        spanLeft.innerHTML ++
+        spanLeft.innerHTML++
         this.computed()
     }
 
     against = ev => {
-        let {spanRight} = this.refs;
+        let {spanRight} = this;
 
-        spanRight.innerHTML ++
+        spanRight.innerHTML++
         this.computed()
     }
 
     computed = () => {
-        let {spanLeft, spanRight, spanRate } = this.refs,
+        let {spanLeft, spanRight, spanRate} = this,
             n = parseFloat(spanLeft.innerHTML),
             m = parseFloat(spanRight.innerHTML),
-            rate = ( n+m) === 0 ? '0%' : ((n / (n+m) * 100).toFixed(2) + '%')
+            rate = (n + m) === 0 ? '0%' : ((n / (n + m) * 100).toFixed(2) + '%')
         spanRate.innerHTML = rate;
 
     }
+
     render() {
         let {n, m} = this.state,
-            rate = (n + m) === 0 ? '0%' : ((n/(n+m) * 100).toFixed(2) + '%')
+            rate = (n + m) === 0 ? '0%' : ((n / (n + m) * 100).toFixed(2) + '%')
         return <div className="pane panel-default" style={{width: '60%', margin: '20px auto'}}>
             <div className="panel-heading">
                 <h3 className="panel-title">
@@ -51,13 +54,13 @@ class Vote extends React.Component {
                 </h3>
             </div>
             <div className="panel-body">
-                支持人数：<span ref="spanLeft">0</span>
+                支持人数：<span ref={x => this.spanLeft = x}>0</span>
                 <br/>
                 <br/>
-                反对人数：<span ref="spanRight">0</span>
+                反对人数：<span ref={x => this.spanRight = x}>0</span>
                 <br/>
                 <br/>
-                支持率：<span ref="spanRate">0</span>
+                支持率：<span ref={x => this.spanRate = x}>0</span>
             </div>
             <div className="panel-footer">
                 <button className="btn btn-success" onClick={this.support}>支持</button>
