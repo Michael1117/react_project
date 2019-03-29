@@ -3,76 +3,36 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import PropTypes from 'prop-types'
 
-class Vote extends React.Component {
-    // 组件传递的属性是只读的  我们为其设置默认值和相关规则
-    static defaultProps = {}
-    static propTypes = {
-        title: PropTypes.string.isRequired
-    }
-
-    constructor(props) {
-        super(props)
-        // INIT STATE
+class Temp extends React.Component {
+    constructor() {
+        super();
         this.state = {
-            n: 0,  // 支持人数
-            m: 0   // 反对人数
+            text: 'Michael'
         }
     }
 
-    support = ev => {
-        //console.log(this.refs);
-        console.log(this);
-        let {spanLeft} = this;
-
-        spanLeft.innerHTML++
-        this.computed()
-    }
-
-    against = ev => {
-        let {spanRight} = this;
-
-        spanRight.innerHTML++
-        this.computed()
-    }
-
-    computed = () => {
-        let {spanLeft, spanRight, spanRate} = this,
-            n = parseFloat(spanLeft.innerHTML),
-            m = parseFloat(spanRight.innerHTML),
-            rate = (n + m) === 0 ? '0%' : ((n / (n + m) * 100).toFixed(2) + '%')
-        spanRate.innerHTML = rate;
-
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({text: 'Hello World'})
+        }, 1000)
     }
 
     render() {
-        let {n, m} = this.state,
-            rate = (n + m) === 0 ? '0%' : ((n / (n + m) * 100).toFixed(2) + '%')
-        return <div className="pane panel-default" style={{width: '60%', margin: '20px auto'}}>
+        let {text} = this.state;
+        return <section className="panel panel-default">
             <div className="panel-heading">
-                <h3 className="panel-title">
-                    {this.props.title}
-                </h3>
+                <input onChange={ev => {
+                    /**/
+                    this.setState({
+                        text: ev.target.value
+                    })
+                }} type="text" className="form-control" value={text}/>
             </div>
             <div className="panel-body">
-                支持人数：<span ref={x => this.spanLeft = x}>0</span>
-                <br/>
-                <br/>
-                反对人数：<span ref={x => this.spanRight = x}>0</span>
-                <br/>
-                <br/>
-                支持率：<span ref={x => this.spanRate = x}>0</span>
+                {text}
             </div>
-            <div className="panel-footer">
-                <button className="btn btn-success" onClick={this.support}>支持</button>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <button className="btn btn-danger" onClick={this.against}>反对</button>
-            </div>
-        </div>
+        </section>
     }
 }
 
-ReactDOM.render(<main>
-    <Vote title="世界杯小组赛法国VS秘鲁，法国对必胜！"/>
-    <Vote title="世界杯小组赛阿根廷VS克罗地亚，壮哉我大梅西！"/>
-</main>, document.querySelector('#root'))
-
+ReactDOM.render(<Temp/>, document.querySelector('#root'))
