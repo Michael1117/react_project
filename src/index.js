@@ -2,16 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Dialog from './component/Dialog.js'
 
-let root = document.querySelector('#root')
+import 'bootstrap/dist/css/bootstrap.css'
+
 ReactDOM.render(<div>
-   {/*JSX调取组件*/}
-   <Dialog con='哈哈哈' style={{color: 'red'}}/>
-   <Dialog con="嘿嘿嘿" lx={2}>
-       <span>1</span>
-       <span>2</span>
-   </Dialog>
-</div>, root)
-
-
+    <Dialog content="哈哈哈哈"/>
+    <Dialog type={2} content="呵呵呵呵呵"/>
+    <Dialog type="请登录" content = {'新的jsx语法'}>
+        <button type="button" className="btn btn-success">登录</button>
+        <button type="button" className="btn btn-danger">取消</button>
+    </Dialog>
+</div>, document.querySelector('#root'));
 
 
