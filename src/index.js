@@ -9,8 +9,8 @@ import Vote from './component/Vote'
 *   2.基于类创建组件
 * */
 ReactDOM.render(<div>
-    <Vote title={'床前明月光'}/>
-    <Vote title={'举头望明月'}>
-        <p>低头思故乡</p>
+    <Vote title={'床前明月光!!!'}/>
+    <Vote title={'举头望明月!!!'}>
+        <p>低头思故乡!!!</p>
     </Vote>
 </div>, document.querySelector('#root'))
