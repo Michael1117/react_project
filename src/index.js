@@ -14,10 +14,6 @@ class A extends React.Component {
 
     componentWillMount() {
         console.log('2=will-mount:第一次渲染之前,componentWillMount', this.refs.HH)
-    }
-
-    componentDidMount() {
-        console.log('4=Did-mount:第一次渲染之后,componentDidMount-----', this.refs.HH)
 
         setInterval(() => {
             this.setState({
@@ -26,7 +22,12 @@ class A extends React.Component {
         }, 4000)
     }
 
-    shouldComponentUpdate(nextProps, nextState, nextContext) {
+    componentDidMount() {
+        console.log('4=Did-mount:第一次渲染之后,componentDidMount-----', this.refs.HH)
+
+    }
+
+    /*shouldComponentUpdate(nextProps, nextState, nextContext) {
         //console.log(nextContext);
         console.log('5=是否允许更新, shouldComponentUpdate', nextState.n);
         if (nextState.n > 3) {
@@ -42,7 +43,12 @@ class A extends React.Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         //console.log(snapshot);
         console.log('8=组件更新之后, componentDidUpdate-----');
+    }*/
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        //console.log(snapshot);
+        console.log('8=组件更新之后, componentDidUpdate-----');
     }
+
 
     render() {
         console.log('render');
