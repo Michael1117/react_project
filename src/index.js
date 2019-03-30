@@ -1,27 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+/*let name = "Michael",
+    data = [{id: 1, title: 'xxx'}, {id: 2, title: 'yyyy'}]*/
 
 
-/*ReactDOM.render(<div>
-    <h2>Hello World</h2>
-</div>, document.querySelector('#root'))*/
+ReactDOM.render(<section
+    id={'box'}
+    className={'box'}
+    style={{color: 'red'}}
 
-
-let name = "Michael",
-    data = [{id: 1, title: 'xxx'}, {id: 2, title: 'yyyy'}]
-
-/*
-ReactDOM.render(<div>
-    <h2>Hello World</h2>
-    <h3>{name}</h3>
-    {
-        data.map((item, index) => {
-            return <li>
-                {item.id} - {item.title}
-            </li>
-        })
-    }
-</div>, document.querySelector('#root'))*/
-
-ReactDOM.render(<ul></ul>, document.querySelector('#root'))
+    onClick={ev => {
+        console.log(ev);
+    }}>
+    <h2 className={'title'} >Hello World</h2>
+    <p className={'content'}>最强大的xxxx</p>
+</section>, document.querySelector('#root'))
