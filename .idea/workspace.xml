@@ -21,10 +21,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="17" column="10" selection-start-line="7" selection-start-column="16" selection-end-line="17" selection-end-column="10" />
+            <state relative-caret-position="-49">
+              <caret line="76" column="17" lean-forward="true" selection-start-line="76" selection-start-column="9" selection-end-line="76" selection-end-column="17" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#2077#2177#0" />
+                <element signature="e#2189#2433#0" />
               </folding>
             </state>
           </provider>
@@ -218,18 +220,18 @@
       <option name="presentableId" value="Default" />
       <updated>1553762826677</updated>
       <workItem from="1553762831328" duration="9704000" />
-      <workItem from="1553844686944" duration="44422000" />
+      <workItem from="1553844686944" duration="47865000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54126000" />
+    <option name="totallyTimeSpent" value="57569000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49875313" visible="true" weight="0.14266843" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49875313" visible="true" weight="0.025759578" />
       <window_info id="Structure" order="1" sideWeight="0.50124687" side_tool="true" weight="0.0660502" />
       <window_info id="Favorites" order="2" sideWeight="0.50124687" side_tool="true" weight="0.30977544" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -392,10 +394,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="17" column="10" selection-start-line="7" selection-start-column="16" selection-end-line="17" selection-end-column="10" />
+        <state relative-caret-position="-49">
+          <caret line="76" column="17" lean-forward="true" selection-start-line="76" selection-start-column="9" selection-end-line="76" selection-end-column="17" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#2077#2177#0" />
+            <element signature="e#2189#2433#0" />
           </folding>
         </state>
       </provider>
