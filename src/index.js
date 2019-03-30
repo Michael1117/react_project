@@ -1,60 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
-import PropTypes from 'prop-types'
+import Banner from './component/Banner'
+import './static/css/reset.min.css'
+//import A5 from './static/images/5.jpg'
 
-class Head extends React.Component{
-    constructor(props) {
-        super(props)
-    }
+// 在React 的jsx中需要使用图片等资源的时候 资源的地址不能使用相对地址 ()
+let img_data = [];
 
-    render() {
-        return (
-            <div className="panel-heading">
-                <h3 className="panel-title">
-                    点击次数：{this.props.count}
-                </h3>
-            </div>
-        );
-    }
+for (let i = 1; i <= 5; i++) {
+    img_data.push({
+        id: i,
+        title: '',
+        pic: require(`./static/images/${i}.jpg`)
+    })
+
 }
 
+ReactDOM.render(<div>
+    {/*data:轮播图需要绑定的数据 interval：间隔时间(3000) step:默认索引(前后各克隆一张) speed:速度(200ms)*/}
+    <Banner data={img_data} interval={3000} step={2} speed={300}/>
+    <div style={{margin: '20px auto'}}>
 
-class Body extends React.Component{
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        return (
-            <div className="panel-body">
-                <button className="btn btn-success" onClick={this.props.callBack}>点我啊</button>
-            </div>
-        );
-    }
-}
-
-class Panel extends React.Component{
-    constructor() {
-        super()
-        this.state = {
-            n: 0
-        }
-    }
-
-    fn = () => {
-        // => 修改panel的状态信息
-        this.setState({
-            n: ++this.state.n
-        })
-    }
-    render() {
-        return <section className="panel panel-default" style={{width: '50%', margin: '20px auto'}}>
-            <Head count={this.state.n}/>
-            {/*父组件*/}
-            <Body callBack={this.fn}/>
-        </section>
-    }
-}
-
-ReactDOM.render(<Panel/>, document.querySelector('#root'))
+    </div>
+    <Banner data={img_data.slice(2)} interval={5000} step={3}/>
+</div>, document.querySelector('#root'))
