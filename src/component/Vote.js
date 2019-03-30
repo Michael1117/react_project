@@ -5,20 +5,9 @@ import React from 'react'
 export default class Vote extends React.Component {
     constructor(props) {
         super(props)
-
-        // 初始化状态
-        this.state = {
-            n: 0,
-            m: 0
-        }
     }
 
     render() {
-        let {n, m} = this.state
-        let rate = (n / (n + m)) * 100;
-        //isNaN(rate) ? rate = 0 : '';
-        if(isNaN(rate)) rate = 0
-
 
         return <section className={'panel panel-default'} style={{width: '50%', margin: '20px auto'}}>
             <div className={'panel-heading'}>
@@ -27,11 +16,11 @@ export default class Vote extends React.Component {
                 </h3>
             </div>
             <div className={'panel-body'}>
-                支持人数：<span>{m}</span>
+                支持人数：<span ref={'support'}>0</span>
                 <br/>
-                反对人数：<span>{n}</span>
+                反对人数：<span ref={'against'}>0</span>
                 <br/>
-                比率: <span>{rate.toFixed(2) + '%'}</span>
+                比率: <span ref={'Rate'}>0%</span>
                 <br/>
 
             </div>
@@ -50,13 +39,23 @@ export default class Vote extends React.Component {
     }
 
     support = ev => {
-        this.setState({
-            n: this.state.n + 1
-        })
+        //console.log(this.refs);
+        this.refs.support.innerHTML++
+        this.computed()
     }
     against = ev => {
-        this.setState({
-            m: this.state.m + 1
-        })
+        //console.log(this.refs);
+        this.refs.against.innerHTML++
+        this.computed()
+    }
+
+    computed = ev => {
+        let {support, against, Rate} = this.refs,
+            n = parseFloat(support.innerHTML),
+            m = parseFloat(against.innerHTML),
+            ra = (n/(n+m)) * 100
+
+        if(isNaN(ra)) ra = 0
+        Rate.innerHTML = ra.toFixed(2) + '%'
     }
 }
