@@ -1,4 +1,5 @@
 import React from 'react'
+import * as type from '../../store/action-types'
 
 export default class VoteFooter extends React.Component {
     constructor(props) {
@@ -10,7 +11,7 @@ export default class VoteFooter extends React.Component {
         return <div className={'panel-footer'}>
             <button className={'btn btn-success'} onClick={() => {
                 dispatch({
-                    type: 'VOTE_SUPPORT'
+                    type: type.VOTE_SUPPORT
                 })
             }
             }>支持
@@ -18,7 +19,7 @@ export default class VoteFooter extends React.Component {
             &nbsp;&nbsp;
             <button className={'btn btn-danger'} onClick = {() => {
                 dispatch({
-                    type: 'VOTE_AGAINST'
+                    type: type.VOTE_AGAINST
                 })
 
             }}>反对

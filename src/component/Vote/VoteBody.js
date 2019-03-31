@@ -4,25 +4,19 @@ export default class VoteBody extends React.Component {
     constructor(props) {
         super(props)
 
-        console.log(this.props);
-        let {store: {getState}} = this.props,
-            {n, m} = getState();
+        //console.log(this.props);
+        //let {store} = this.props
+        let {n, m} = this.props.store.getState().vote;
 
         this.state = {n, m}
     }
 
     componentDidMount() {
-        let {store: {getState, subscribe}} = this.props;
+        this.props.store.subscribe(() => {
+            let {n, m} = this.props.store.getState().vote;
 
-        /*let unsubscribe =*/ subscribe(() => {
-            let {n, m} = getState();
-            this.setState({
-                n,
-                m
-            })
+            this.setState({n, m})
         })
-
-        //unsubscribe  解绑
     }
 
     render() {
