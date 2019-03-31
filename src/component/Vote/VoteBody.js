@@ -1,31 +1,17 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 export default class VoteBody extends React.Component {
-    static contextTypes = {
-        n: PropTypes.number,
-        m: PropTypes.number
-    }
-
-    constructor(props, context) {
-        super(props, context)
-
-        console.log(this);
-        console.log(context);
+    constructor(props) {
+        super(props)
     }
 
     render() {
-        let {n, m} = this.context,
-            rate = (n / (n + m)) * 100
-
-        if(isNaN(rate)) rate = 0;
-
         return <div className={'panel-body'}>
-            支持人数：<span>{n}</span>
+            支持人数：<span>0</span>
             <br/>
-            反对人数：<span>{m}</span>
+            反对人数：<span>0</span>
             <br/>
-            比率：<span>{rate.toFixed(2) + '%'}</span>
+            比率：<span>0.00%</span>
             <br/>
         </div>
     }
