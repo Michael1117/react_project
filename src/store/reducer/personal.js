@@ -4,6 +4,5 @@ export default function personal(state = {
     baseInfo: {}
     }, action) {
 
-
     return state;
 }
