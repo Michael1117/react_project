@@ -4,25 +4,31 @@ export default class VoteBody extends React.Component {
     constructor(props) {
         super(props)
 
-        this.state = {
-            refresh: 0
-        }
+        console.log(this.props);
+        let {store: {getState}} = this.props,
+            {n, m} = getState();
+
+        this.state = {n, m}
     }
 
     componentDidMount() {
-        this.props.myRedux.subscribe(() => {
+        let {store: {getState, subscribe}} = this.props;
+
+        /*let unsubscribe =*/ subscribe(() => {
+            let {n, m} = getState();
             this.setState({
-                refresh: this.state.refresh + 1
+                n,
+                m
             })
         })
 
+        //unsubscribe  解绑
     }
 
     render() {
-        let state = this.props.myRedux.getState(),
-            {n = 0, m = 0} = state,
+        let {n, m} = this.state,
             rate = (n / (n + m)) * 100;
-        if (isNaN(rate)) rate = 0;
+        if (isNaN(rate)) rate = 0
 
         return <div className={'panel-body'}>
             支持人数：<span>{n}</span>
