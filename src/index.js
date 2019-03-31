@@ -1,16 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css'
-import Vote from "./component/Vote/Vote";
+import VoteBase from "./component/vote/VoteBase";
+import VoteHandle from "./component/vote/VoteHandle";
 
-import store from './store'
-
-ReactDOM.render(
-    <main>
-        <Vote title={'床前明月光'} count={{
-            n: 10,
-            m: 78
-        }}
-        store={store}/>
-    </main>
-    , document.querySelector('#root'))
+ReactDOM.render(<section className='panel panel-default' style={{width: '50%'}}>
+    <VoteBase/>
+    <VoteHandle/></section>, document.querySelector('#root'))
