@@ -5,6 +5,7 @@
     height: 300px;
     overflow: hidden;
     text-align: center;
+
 }
 
 .container:hover .arrow {
@@ -24,12 +25,14 @@
     float: left;
     width: 1000px;
     height: 100%;
+    list-style: none;
 }
 
 .container .wrapper li img {
     display: block;
     width: 100%;
     height: 100%;
+
 }
 
 .container .focus {
@@ -52,6 +55,7 @@
     background: rgba(255, 255, 255, .8);
     border-radius: 50%;
     cursor: pointer;
+
 }
 
 .container .focus li.active {
@@ -74,7 +78,8 @@
 }
 
 .container .arrow.arrowLeft {
-    left: 0;
+    position: absolute;
+    left: 0px;
 }
 
 .container .arrow.arrowRight {
