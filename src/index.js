@@ -11,7 +11,7 @@ import Vote from "./component/Vote/Vote";
 ReactDOM.render(
     <main>
         <Vote title={'床前明月光'} count={{
-            n: 100,
+            n: 10,
             m: 78
         }}/>
     </main>

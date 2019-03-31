@@ -23,20 +23,42 @@ export default class Vote extends React.Component {
     * */
     static childContextTypes = {
         n: PropTypes.number,
-        m: PropTypes.number
+        m: PropTypes.number,
+        callBack: PropTypes.func
     }
 
     getChildContext() {
-        let {count: {n = 0, m = 0}} = this.props;
+        console.log('ok');
+        let {n = 0, m = 0} = this.state;
         // return的是啥， 相当于给子组件上下文设置成为啥
         return {
             n,
-            m
+            m,
+            callBack: this.updateContext
         }
     }
 
     constructor(props) {
         super(props)
+        // 先把属性的值给状态  因为属性的值不能改 状态的值能改
+        let {count: {n = 0, m = 0}} = this.props;
+        this.state = {
+            n,
+            m
+        }
+    }
+
+    updateContext = type => {
+        //
+        if (type === 'support') {
+            this.setState({
+                n: this.state.n + 1
+            })
+        } else {
+            this.setState({
+                m: this.state.m + 1
+            })
+        }
     }
 
     render() {
